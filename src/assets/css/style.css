@@ -1,0 +1,349 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    transition: .3s;
+}
+
+/* Reusable Components */
+h1 {
+    font-weight: 700;
+}
+
+a {
+    color: var(--black);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+ul, li {
+    list-style: none;
+}
+
+.active {
+    color: var(--theme);
+}
+
+.bold-hr {
+    border: 2px solid var(--black);
+}
+
+.bold-title {
+    font-weight: 600;
+}
+
+.gray-title {
+    color: var(--gray);
+}
+
+.bg-gray1 {
+    background: var(--topback);
+}
+.bg-gray2 {
+    background: var(--back2);
+}
+
+.btn-danger {
+    background: var(--theme);
+}
+
+.btn-danger:hover {
+    background: var(--themehover);
+}
+
+.btn-outline-dark:hover {
+    color: #000;
+    background: transparent;
+}
+
+.text-danger{
+    color: var(--theme);
+}
+.text-danger:hover {
+    color: var(--themehover);
+} 
+
+/* Grid Container 2x */
+.grid-container-2x {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+/*  Container Design */
+.container {
+    max-width: 1670px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 35px;
+}
+@media only screen and (max-width: 550px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+@media only screen and (max-width: 450px) {
+    .container {
+        padding: 0 10px;
+    }
+}
+
+/* Search Suggestion */
+.search-suggestions {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+    z-index: 1000;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-suggestions .dropdown-item {
+    cursor: pointer;
+    border-top: 1px solid #f0f0f0;
+}
+
+.search-suggestions .dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+/* For Mobile Device */
+.mobile-search-box {
+    position: relative;
+}
+
+.search-suggestions-mobile {
+    padding-top: 10px;
+    display: none;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.search-suggestions-mobile .dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+    border-top: 1px solid #f0f0f0;
+}
+
+.search-suggestions-mobile .dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+@media only screen and (max-width: 600px) {
+    .search-suggestions-mobile .dropdown-item span {
+        font-size: 13px;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .search-suggestions-mobile .dropdown-item span {
+        font-size: 11px;
+    }
+}
+
+/* Search Suggetion */
+
+
+/* Start Card Area */
+.card {
+    border-radius: 20px;
+}
+
+/* Card Button */
+.card-body .btn {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.card-body .btn:last-child {
+    margin-bottom: 0;
+}
+
+.card-body .btn span {
+    font-weight: 600;
+}
+
+/* Card Text */
+.card h6 {
+    font-size: 20px;
+    font-weight: 700;
+}
+.card p {
+    margin-bottom: 10px;
+}
+
+/* Card Image */
+.card-img-top {
+    padding: 7px;
+    border-radius: 20px 20px 0px 0;
+}
+
+/* End Card Area */
+
+
+/* Footer Area */
+.footer-grid-container {
+    display: grid;
+    grid-template-columns: 40% 20% 20% 20%;
+}
+
+.footer-grid-container  > div {
+    padding: 10px;
+}
+
+.footer-grid-container .logo {
+    text-align: left;
+}
+
+.footer-grid-container h6 {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.footer-grid-container p {
+    padding: 5px 0;
+}
+
+.footer-grid-container a:hover {
+    color: var(--theme);
+}
+
+.footer-grid-container .business p span,
+.footer-grid-container .business .copyright {
+    font-weight: 500;
+}
+
+.footer-grid-container .newsletter .copyright {
+    display: none;
+}
+
+.footer-grid-container .social-links i {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+@media only screen and (max-width: 1150px) {
+    .footer-grid-container {
+        margin-bottom: 50px;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .business {
+        grid-area: business;
+    }
+    .about {
+        grid-area: about;
+    }
+    .help {
+        grid-area: help;
+    }
+    .newsletter {
+        grid-area: news;
+    }
+    .footer-grid-container {
+        grid-template-areas: 'business business business business'
+                             'about about help help'
+                             'news news news news';
+        row-gap: 24px;
+    }
+    .footer-grid-container input {
+        width: 60%;
+    }
+    .footer-grid-container .business .copyright {
+        display: none;
+    }
+    .footer-grid-container .newsletter .copyright {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .footer-grid-container input {
+        width: 100%;
+    }
+}
+/* ── Fabrilife-style Global Additions ── */
+
+/* Clean section backgrounds */
+.bg-gray1 { background: #f6f6f6 !important; }
+.bg-gray2 { background: #fafafa !important; }
+
+/* Footer nav page (copyright bar) */
+.nav-page {
+    background: #111;
+}
+
+/* Btn overrides */
+.btn-dark {
+    background: #000 !important;
+    border-color: #000 !important;
+    color: #fff !important;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    font-size: 13px;
+}
+.btn-dark:hover {
+    background: #222 !important;
+    border-color: #222 !important;
+}
+
+.btn-subs {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 11px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+}
+.btn-subs:hover { background: #333; }
+
+/* InfoArea styling */
+.info-area {
+    background: #fff;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.single-features h6 {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.single-features p {
+    font-size: 13px;
+    color: #888;
+}
+
+/* SSL / payment img */
+.ssl-img img {
+    max-height: 42px;
+    filter: grayscale(80%);
+    opacity: 0.7;
+}
+
+/* Active link */
+.active { color: #000 !important; font-weight: 700; }
+
+/* Section titles */
+h1 { font-weight: 800; }
+
+/* Product card hover */
+.product-card-wrapper:hover { transform: translateY(-4px); }

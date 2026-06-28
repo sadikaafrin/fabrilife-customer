@@ -1,0 +1,900 @@
+/* ========================================
+   TABLE OF CONTENTS
+   ========================================
+   1. BASE STYLES & UTILITIES
+   2. NAVIGATION & HEADER
+   3. HERO BANNER
+   4. BUTTONS
+   5. CARDS & PRODUCT CARDS
+   6. CAROUSELS
+   7. CATEGORIES
+   8. BLOG COMPONENTS
+   9. FORMS & INPUTS
+   10. MODALS & ALERTS
+   11. TABS & PANELS
+   12. SIZE SELECTION
+   13. FOOTER
+   14. MEDIA QUERIES
+   ======================================== */
+
+
+/* ========================================
+   1. BASE STYLES & UTILITIES
+   ======================================== */
+
+ul {
+    margin-bottom: 0px;
+}
+
+.gallery-img {
+    transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.gallery-img:hover {
+    transform: scale(1.05);
+}
+
+.product-details ul li,
+.panel ul li {
+    list-style: disc;
+}
+
+
+/* ========================================
+   2. NAVIGATION & HEADER
+   ======================================== */
+
+/* Navbar Background */
+.nav-page {
+    background: var(--navbarbg);
+}
+
+.nav-text {
+    color: var(--navbarText);
+}
+
+/* Search Area */
+.search-area {
+    margin: 0 15px;
+    border-radius: 5px;
+}
+
+/* Wish Logo */
+.wish-logo {
+    display: none;
+    margin-right: 20px;
+}
+
+/* Cart Counter Indicator */
+.cart-counter {
+    background-color: var(--counterbg);
+}
+
+/* Order Tracker Icons */
+.order-tracker-icon {
+    display: block;
+}
+
+.order-tracker-icon-2 {
+    display: none;
+}
+
+
+/* ========================================
+   3. HERO BANNER
+   ======================================== */
+
+.hero-banner {
+    background: #ccc;
+    height: 400px;
+    position: relative;
+    color: #fff;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-text {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    transform: translateY(-50%);
+}
+
+
+/* ========================================
+   4. BUTTONS
+   ======================================== */
+
+/* Subscribe Button */
+.btn-subs {
+    background-color: var(--subsbtnBg);
+    color: var(--subsbtnText);
+    border: none;
+}
+
+.btn-subs:hover {
+    background-color: var(--subsbtnHoverBg);
+    color: var(--subsbtnHoverText);
+}
+
+/* Dark Button */
+.btn-dark,
+.button .btn-dark {
+    outline: none;
+    border: none;
+    background-color: #000;
+    color: #fff;
+}
+
+/* Outline Dark Button */
+.btn-outline-dark:hover {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+
+/* ========================================
+   5. CARDS & PRODUCT CARDS
+   ======================================== */
+
+/* Base Card Styles */
+.card {
+    cursor: pointer;
+    border: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform .18s ease, box-shadow .18s ease;
+    /* border: 1px solid rgb(201, 201, 201); */
+    /* box-shadow: 0 6px 20px rgba(12, 13, 14, 0.06); */
+}
+
+/* .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 12px 28px rgba(12, 13, 14, 0.08);
+} */
+
+.card-img-top {
+    border-radius: 0;
+    padding: 0;
+    border-radius: 0;
+}
+
+.card img:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+/* .card-body {
+    padding: 12px 14px;
+} */
+
+.card-body h6 {
+    font-weight: 500;
+}
+
+/* Product Card Specific */
+.single-features h6 {
+    font-size: 18px;
+}
+
+.product-img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Price Display */
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.price-now {
+    font-weight: 800;
+    font-size: 1.05rem;
+}
+
+.price-old {
+    text-decoration: line-through;
+    color: #9ca3af;
+    font-size: .9rem;
+}
+
+
+/* ========================================
+   6. CAROUSELS
+   ======================================== */
+
+/* New Wrapper Container */
+.new-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+/* Carousel Navigation Icons */
+.new-wrapper i {
+    top: 50%;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    font-size: 1.25rem;
+    position: absolute;
+    text-align: center;
+    line-height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+    transform: translateY(-50%);
+    transition: transform 0.1s linear;
+}
+
+.new-wrapper i:active {
+    transform: translateY(-50%) scale(0.85);
+}
+
+.new-wrapper i:first-child {
+    left: -22px;
+}
+
+.new-wrapper i:last-child {
+    right: -22px;
+}
+
+/* Carousel Grid */
+.new-wrapper .new-carousel,
+.new-wrapper .none-carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 4) - 5px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    border-radius: 8px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.new-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.new-carousel.no-transition {
+    scroll-behavior: auto;
+}
+
+.new-carousel.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.new-carousel.dragging .new-card {
+    cursor: grab;
+    user-select: none;
+}
+
+/* Carousel Card Layout */
+.new-carousel :where(.new-card, .new-img),
+.none-carousel :where(.new-card, .new-img) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-carousel .new-card,
+.none-carousel .new-card {
+    scroll-snap-align: start;
+    height: 342px;
+    list-style: none;
+    background: #fff;
+    cursor: pointer;
+    padding-bottom: 15px;
+    flex-direction: column;
+    border-radius: 8px;
+}
+
+/* Carousel Image */
+.new-carousel .new-card .new-img,
+.none-carousel .new-card .new-img {
+    background: #ffac53;
+    height: 148px;
+    width: 148px;
+    border-radius: 50%;
+}
+
+.new-card .new-img img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+}
+
+/* Carousel Text */
+.new-carousel .new-card h2,
+.none-carousel .new-card h2 {
+    font-weight: 500;
+    font-size: 1.56rem;
+    margin: 30px 0 5px;
+}
+
+.new-carousel .new-card span,
+.none-carousel .new-card span {
+    color: #6A6D78;
+    font-size: 1.31rem;
+}
+
+
+/* ========================================
+   7. CATEGORIES
+   ======================================== */
+
+/* Mobile Category List */
+.mobile-category-list {
+    display: none;
+}
+
+/* Category Dropdown */
+.all-categories-dropdown {
+    position: absolute;
+    top: 57px;
+    left: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    grid-template-columns: 1fr;
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 350px;
+}
+
+.category-with-sub {
+    position: relative;
+}
+
+.category-with-sub > a {
+    padding: 10px 15px;
+    display: block;
+    color: #333;
+    font-weight: 400;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.category-with-sub > a:hover {
+    background: #f2f2f2;
+}
+
+/* Subcategory Dropdown */
+.subcategory-dropdown {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 220px;
+    background: #fff;
+    border-left: 1px solid #ccc;
+    display: none;
+    z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.category-with-sub:hover .subcategory-dropdown {
+    display: block;
+}
+
+.subcategory-dropdown a {
+    padding: 10px 15px;
+    display: block;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+}
+
+.subcategory-dropdown a:hover {
+    background: #f9f9f9;
+}
+
+/* Category Circle Images */
+.category-circle-img {
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 3px solid #f2f2f2;
+}
+
+.category-circle-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-title {
+    font-size: 21px;
+    font-weight: 500;
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.category-title:hover {
+    color: #000;
+}
+
+
+/* ========================================
+   8. BLOG COMPONENTS
+   ======================================== */
+
+/* Blog Details Wrapper */
+.blog-details-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Blog Content */
+.blog-content {
+    flex: 1 1 60%;
+}
+
+.blog-content h1 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.blog-meta {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 25px;
+}
+
+.blog-content p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Blog Image */
+.blog-image {
+    flex: 1 1 35%;
+}
+
+.blog-image img {
+    width: 100%;
+    border-radius: 14px;
+    object-fit: cover;
+    height: 420px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease;
+}
+
+.blog-image img:hover {
+    transform: scale(1.03);
+}
+
+/* Related Blogs */
+.related-blogs {
+    margin-top: 70px;
+}
+
+.related-blogs h3 {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.related-blogs .blog-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.related-blogs .blog-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.related-blogs .blog-card img {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.related-blogs .card-body {
+    padding: 15px;
+}
+
+.related-blogs .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    min-height: 48px;
+    line-height: 1.3em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.related-blogs .card-text {
+    font-size: 0.875rem;
+    color: #6c757d;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.related-blogs .card-footer {
+    background: #f9f9f9;
+    font-size: 0.8rem;
+}
+
+
+/* ========================================
+   9. FORMS & INPUTS
+   ======================================== */
+
+/* Radio Input Box */
+.radio-input-box input[type="radio"] {
+    height: 15px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.radio-input-box label {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.radio-input-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+/* Option Box (Select Dropdowns) */
+.option-box {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.option-box label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+}
+
+.option-box select {
+    padding: 10px 14px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    background: #f9f9f9;
+    cursor: pointer;
+}
+
+.option-box select:hover {
+    border-color: #007bff;
+    background: #fff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.2);
+}
+
+.option-box select:focus {
+    border-color: #007bff;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+}
+
+
+/* ========================================
+   10. MODALS & ALERTS
+   ======================================== */
+
+/* SweetAlert Container */
+.swal2-container {
+    z-index: 99999 !important;
+}
+
+/* Success Box */
+#success-box {
+    margin: auto;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 20px;
+    color: #0A3622;
+    background: #D1E7DD;
+}
+
+/* Error Message */
+#msg {
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border-bottom: 3px solid #9c202c;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    display: none;
+}
+
+/* Success Message */
+#success-msg {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 3px solid #0f5132;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    display: none;
+}
+
+/* Success Icon */
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #d4edda;
+    color: #28a745;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ========================================
+   11. TABS & PANELS
+   ======================================== */
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    background: #e5e5e5;
+    border: 1px solid rgb(217, 217, 217);
+}
+
+.input {
+    position: absolute;
+    opacity: 0;
+}
+
+.label {
+    width: 100%;
+    padding: 20px 30px;
+    background: #e5e5e5;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    color: #7f7f7f;
+    transition: background 0.1s, color 0.1s;
+}
+
+.label:hover {
+    background: #d8d8d8;
+}
+
+.label:active {
+    background: #ccc;
+}
+
+.input:focus + .label {
+    z-index: 1;
+}
+
+.input:checked + .label {
+    background: #fff;
+    color: #000;
+}
+
+.panel {
+    width: 100%;
+    display: none;
+    padding: 20px 30px 30px;
+    background: #fff;
+}
+
+.input:checked + .label + .panel {
+    display: block;
+}
+
+
+/* ========================================
+   12. SIZE SELECTION
+   ======================================== */
+
+.size-buttons {
+    margin-top: 5px;
+}
+
+.size-btn {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.size-btn:hover:not(:disabled) {
+    border-color: #000;
+    background-color: #f0f0f0;
+}
+
+.size-btn.active {
+    border-color: #000;
+    background-color: #000;
+    color: #fff;
+}
+
+.size-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+
+/* ========================================
+   13. FOOTER
+   ======================================== */
+
+.footer-grid-container .social-links i {
+    font-size: 30px;
+}
+
+
+/* ========================================
+   14. REVIEWS
+   ======================================== */
+
+#review_content .reviewer-dp {
+    width: 50px;
+    height: 50px;
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+
+/* ========================================
+   15. MEDIA QUERIES
+   ======================================== */
+
+/* Tablets and Medium Screens (900px and below) */
+@media screen and (max-width: 900px) {
+    .new-wrapper .new-carousel,
+    .new-wrapper .none-carousel {
+        grid-auto-columns: calc(100% / 3);
+    }
+}
+
+/* Blog Details Responsive */
+@media (max-width: 991px) {
+    .blog-details-wrapper {
+        flex-direction: column;
+    }
+
+    .blog-image img {
+        height: auto;
+    }
+}
+
+/* Small Tablets (700px and below) */
+/* @media only screen and (max-width: 700px) {
+    .order-tracker-icon {
+        display: none;
+    }
+} */
+
+@media only screen and (min-width: 701px) {
+    .order-tracker-icon-2 {
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 701px) {
+    .order-tracker-icon {
+        display: none;
+    }
+}
+
+/* Tabs Responsive */
+@media (min-width: 600px) {
+    .label {
+        width: auto;
+    }
+
+    .panel {
+        order: 99;
+    }
+}
+
+/* Mobile Phones (600px and below) */
+@media screen and (max-width: 600px) {
+    .new-wrapper .new-carousel,
+    .new-wrapper .none-carousel {
+        grid-auto-columns: calc(100% / 2);
+    }
+}
+
+/* Small Mobile Phones (500px and below) */
+@media screen and (max-width: 500px) {
+    .new-wrapper .new-carousel,
+    .new-wrapper .none-carousel {
+        grid-auto-columns: calc((100% / 1) + 45px);
+    }
+}
+
+/* Navigation Breakpoint (1148px and below) */
+@media only screen and (max-width: 1148px) {
+    .wish-logo {
+        display: block;
+        margin-left: 10px;
+    }
+
+    .call,
+    .cart-btn,
+    .prfl {
+        display: none;
+    }
+}
+
+/* Category Display Toggle (1150px) */
+@media only screen and (max-width: 1150px) {
+    nav .nav-page {
+        background: #fff;
+    }
+
+    nav .nav-text {
+        color: #000;
+    }
+
+    .mobile-category-list {
+        display: block;
+    }
+
+    .deks-cat {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1151px) {
+    .order-tracker-icon-2 {
+        padding-left: 40px;
+    }
+
+    .mbl-cat {
+        display: none;
+    }
+}

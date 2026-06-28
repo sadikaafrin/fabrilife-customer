@@ -1,0 +1,36 @@
+/* Table Styling */
+.table td,
+.table th {
+    padding: 15px;
+    border-top: 1px solid #dee2e6;
+}
+.profile-container {
+    max-width: 800px;
+    margin: auto;
+}
+.profile-container button {
+    width: 100%;
+    padding: 10px 30px;
+}
+
+.profile-btn-container {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.profile-btn-container > a:first-child {
+    margin-right: 10px;
+}
+.profile-btn-container > a:last-child {
+    margin-left: 10px;
+}
+
+@media only screen and (max-width: 525px) {
+    .profile-btn-container {
+        display: block;
+    }
+    .profile-container button {
+        margin: 5px 0;
+        padding: 10px;
+    }
+}

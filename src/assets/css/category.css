@@ -1,0 +1,86 @@
+            .block1 {
+                cursor: pointer;
+                position: relative;
+                overflow: hidden;
+                border-radius: 5px;
+                border: 1px solid rgb(220, 220, 220);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .block1:hover {
+                border: 2px solid rgb(0, 0, 0);
+                box-shadow: 0 18px 15px rgba(0, 0, 0, 0.2); 
+                transform: scale(1.05);
+                transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+            }
+        
+            .block1 img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        
+            .block1-btn {
+                position: absolute;
+                bottom: 5px;
+                left: 5px;
+                right: 5px;
+                background-color:rgb(0, 0, 0);
+                color:rgb(255, 255, 255);
+                text-align: center;
+                padding: 8px 0;
+                margin: 5px;
+                font-size: 1rem;
+                text-transform: uppercase;
+                font-weight: bold;
+                text-decoration: none;
+                border-radius: 5px 5px 5px 5px;
+            }
+        
+            .block1-btn:hover {
+                color: #000000;
+                background-color: #f6f6f6;
+            }
+
+            .block1-btn {
+                background-color: #000;
+                color: #fff;
+            }
+
+            /* .block1-btn:hover {
+                background-color: #000;
+                color: #fff;
+            } */
+
+            @media only screen and (max-width: 768px) {
+                .block1-btn {
+                    font-size: 0.8rem;
+                    padding: 6px 0;
+                }
+            }
+            @media only screen and (max-width: 500px) {
+                .block1-btn {
+                    font-size: 0.7rem;
+                    padding: 5px 0;
+                }
+            }
+            @media only screen and (max-width: 400px) {
+                .block1-btn {
+                    /* font-size: 0.5rem; */
+                    padding: 4px 0;
+                }
+            }
+
+
+
+            select option {
+                background-color:rgb(0, 0, 0);
+                color: #fff;
+                padding: 20px;
+            }
+            .size-modal-btn {
+                margin: 5px 0;
+                width: 100%;
+            }
+            .modal-body .size-modal-btn {
+                font-size: 1.1rem;
+            }

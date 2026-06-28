@@ -1,0 +1,13 @@
+.login {
+    max-width: 500px;
+    margin: auto;
+}
+
+/* Login Form */
+.content form .full-input-box {
+    display: block;
+}
+
+form .user-details .input-box {
+    width: 100%;
+}

@@ -1,0 +1,116 @@
+/* Grid Layouting */
+.grid-container {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    /* gap: 15px; */
+}
+
+.grid-container > div {
+    margin: 10px;
+}
+
+@media only screen and (max-width: 1400px) {
+    .grid-container {
+        grid-template-columns: 25% 25% 25% 25%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .grid-container {
+        grid-template-columns: 33.33% 33.33% 33.33%;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .card h6 {
+        font-size: 17px;
+    }
+    .card-body .btn {
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .card h6 {
+        font-size: 13px;
+    }
+    .card p {
+        font-size: 13px;
+    }
+    .card-body .btn {
+        font-size: 12px;
+    }
+    .card-body .btn {
+        padding: 10px;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .card-body .btn {
+        padding: 5px;
+    }
+    .card {
+        border-radius: 15px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 50% 50%;
+    }
+    .card-body {
+        padding: 10px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    /* .grid-container {
+        gap: 8px;
+    } */
+    .grid-container > div {
+        margin: 5px;
+    }
+}
+
+
+/* Grid Layouting For 4* Product Cart */
+.grid-container-4x {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    /* gap: 15px; */
+}
+
+.grid-container-4x > div {
+    margin: 10px;
+}
+
+@media only screen and (max-width: 1700px) {
+    .grid-container-4x {
+        grid-template-columns: 33.33% 33.33% 33.33%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .grid-container-4x {
+        grid-template-columns: 50% 50%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .grid-container-4x {
+        grid-template-columns: 33.33% 33.33% 33.33%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .grid-container-4x {
+        grid-template-columns: 50% 50%;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    /* .grid-container-4x {
+        gap: 5px;
+    } */
+    .grid-container-4x > div {
+        margin: 5px;
+    }
+}
+/* END */

@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --theme: #e53935;
+    --themehover: #c62828;
+    --counterbg: #e53935;
+
+    --white: #fff;
+    --black: #111;
+    --gray: #787878;
+    --topback: #f6f6f6;
+    --back2: #fafafa;
+
+    --navbarbg: #ffffff;
+    --navbarText: #1a1a1a;
+
+    --copyrightbg: #111111;
+    --copyrightText: #ffffff;
+
+    --cartBtnBg: #111111;
+    --cartBtnText: #ffffff;
+    --cartBtnHoverBg: #333333;
+    --cartBtnHoverText: #ffffff;
+
+    --buyBtnBg: #e53935;
+    --buyBtnText: #ffffff;
+    --buyBtnHoverBg: #c62828;
+    --buyBtnHoverText: #ffffff;
+
+    --subsbtnBg: #111111;
+    --subsbtnText: #ffffff;
+    --subsbtnHoverBg: #333333;
+    --subsbtnHoverText: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+}
