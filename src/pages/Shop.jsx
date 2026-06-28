@@ -352,7 +352,7 @@ function Shop() {
           onMouseOver={(e) => (e.target.style.borderColor = "#111")}
           onMouseOut={(e) => (e.target.style.borderColor = "#e0e0e0")}
         >
-          Clear All Filters
+          Clear All Filters 
         </button>
       </div>
     </div>

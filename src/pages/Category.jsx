@@ -154,34 +154,54 @@ function Category() {
       {/* Categories list — all categories, current one highlighted */}
       <p className="fl-cat-section-title">Categories</p>
 
-      {loadingCats ? (
-        Array.from({ length: 4 }).map((_, i) => (
-          <Skeleton key={i} variant="text" width="80%" height={28}
-            sx={{ mx: "1.1rem", mb: 0.5, bgcolor: "grey.100" }} animation="wave" />
-        ))
-      ) : categories.map((cat, i) => {
-        const isActive = cat.slug === slug || cat.link?.includes(slug);
-        const subCats  = cat.sub_category || [];
-        return (
-          <div key={cat.id || i}>
-            <a href={cat.link} style={{ textDecoration: "none" }}>
-              <div className={`fl-main-cat${isActive ? " active" : ""}`}>
-                <div className="fl-main-cat-left">
-                  {cat.img && (
-                    <img src={cat.img} alt=""
-                      style={{ width: 20, height: 20, borderRadius: 3, objectFit: "cover" }} />
-                  )}
-                  <span className="fl-main-cat-name">{cat.title}</span>
-                  {subCats.length > 0 && (
-                    <span className="fl-main-cat-count">{subCats.length}</span>
+{loadingCats ? (
+  Array.from({ length: 4 }).map((_, i) => (
+    <Skeleton key={i} variant="text" width="80%" height={28}
+      sx={{ mx: "1.1rem", mb: 0.5, bgcolor: "grey.100" }} animation="wave" />
+  ))
+) : categories.map((cat, i) => {
+  const isActive = cat.slug === slug || cat.link?.includes(slug);
+  const subCats  = cat.sub_category || [];
+
+  return (
+    <div key={cat.id || i} className="fl-cat-group">
+      {/* Main category row */}
+      <a href={cat.link} style={{ textDecoration: "none" }}>
+        <div className={`fl-main-cat${isActive ? " active" : ""}`}>
+          <div className="fl-main-cat-left">
+            {cat.img && (
+              <img src={cat.img} alt=""
+                style={{ width: 20, height: 20, borderRadius: 3, objectFit: "cover" }} />
+            )}
+            <span className="fl-main-cat-name">{cat.title}</span>
+            {subCats.length > 0 && (
+              <span className="fl-main-cat-count">{subCats.length}</span>
+            )}
+          </div>
+          <i className="ri-arrow-right-s-line fl-main-cat-arrow"></i>
+        </div>
+      </a>
+
+      {/* Subcategories — only show under active category */}
+      {isActive && subCats.length > 0 && (
+        <ul className="fl-subcat-list">
+          {subCats.map((sub, j) => (
+            <li key={sub.id || j} className="fl-subcat-item">
+              <a href={sub.link} style={{ textDecoration: "none" }}>
+                <div className="fl-subcat-row">
+                  <span className="fl-subcat-name">{sub.title}</span>
+                  {sub.product_count !== undefined && (
+                    <span className="fl-subcat-count">{sub.product_count}</span>
                   )}
                 </div>
-                <i className="ri-arrow-right-s-line fl-main-cat-arrow"></i>
-              </div>
-            </a>
-          </div>
-        );
-      })}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+})}
 
       <div className="fl-sidebar-divider" />
 

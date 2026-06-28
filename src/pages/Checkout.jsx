@@ -376,7 +376,7 @@ function Checkout() {
         <>
             <Header />
 
-            <section className="checkout pt-5">
+            <section className="checkout pt-5 container">
                 <div className="container">
                     {/* Hero Section */}
                     <div style={{

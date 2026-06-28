@@ -17,6 +17,62 @@
   background: #f6f7f9;
 }
 
+/* ── Category group ── */
+.fl-cat-group {
+  margin-bottom: 1px;
+}
+
+/* ── Subcategory list ── */
+.fl-subcat-list {
+  list-style: none;
+  margin: 0 0.6rem 4px 1.6rem;
+  padding: 2px 0;
+  border-left: 2px solid #e8e8e8;
+}
+
+.fl-subcat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px 5px 14px;
+  font-size: 0.82rem;
+  color: #555;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.14s, color 0.14s;
+}
+
+.fl-subcat-row:hover  { background: #f0f0f0; color: #111; }
+.fl-subcat-row.active { background: #e8f0fe; color: #1976d2; font-weight: 700; }
+
+.fl-subcat-name { flex: 1; }
+
+.fl-subcat-count {
+  font-size: 0.71rem;
+  color: #aaa;
+  background: #f0f0f0;
+  border-radius: 10px;
+  padding: 1px 7px;
+  margin-left: 6px;
+  min-width: 22px;
+  text-align: center;
+}
+
+/* ── Clear subcategory button ── */
+.fl-clear-sub-btn {
+  font-size: 0.78rem;
+  color: #1976d2;
+  background: #e8f0fe;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.fl-clear-sub-btn:hover { background: #d0e4ff; }
+
 @media (max-width: 1024px) {
   .fl-shop-page { padding: 0 12px; }
 }
