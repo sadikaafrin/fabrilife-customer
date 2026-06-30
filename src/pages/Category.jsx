@@ -8,9 +8,9 @@ import useCategories from "../data/useCategories";
 import "../assets/css/shop.css";
 
 const SPECIAL_OFFERS = [
-  { label: "New Arrival",        key: "new_arrival" },
-  { label: "Top Selling",        key: "top_selling" },
-  { label: "Trending Products",  key: "trending" },
+  { label: "New Arrival", key: "new_arrival" },
+  { label: "Top Selling", key: "top_selling" },
+  { label: "Trending Products", key: "trending" },
   { label: "Top Rated Products", key: "top_rated" },
 ];
 
