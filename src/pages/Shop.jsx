@@ -1,8 +1,9 @@
-import { useState, useMemo, useEffect, useCallback } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Skeleton from "@mui/material/Skeleton";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import SidebarContent from "../components/SidebarContent";
 import { useCart } from "../CartContext";
 import { useWishlist } from "../WishlistContext";
 import useSizes from "../data/useSizes";
@@ -138,10 +139,10 @@ function SkeletonGrid({ count = 12 }) {
    SPECIAL OFFERS config
    ───────────────────────────────────────── */
 const SPECIAL_OFFERS = [
-  { label: "New Arrival",       key: "new_arrival" },
-  { label: "Top Selling",       key: "top_selling" },
+  { label: "New Arrival", key: "new_arrival" },
+  { label: "Top Selling", key: "top_selling" },
   { label: "Trending Products", key: "trending" },
-  { label: "Top Rated Products",key: "top_rated" },
+  { label: "Top Rated Products", key: "top_rated" },
 ];
 
 /* pill colours per category index */
@@ -212,9 +213,8 @@ function Shop() {
     }
 
     if (selectedMainCat) f = f.filter((p) => p.category === selectedMainCat);
-    if (selectedSubCat)  f = f.filter((p) => p.sub_category === selectedSubCat);
+    if (selectedSubCat) f = f.filter((p) => p.sub_category === selectedSubCat);
 
-    /* Special offer filters — match Home.jsx product_type field exactly */
     if (selectedOffer === "new_arrival")
       f = f.filter((p) => p.product_type === "new_arrival");
     else if (selectedOffer === "top_selling")
@@ -250,114 +250,6 @@ function Shop() {
     setMaxPrice(priceRange.max);
   };
 
-  const handleMainCatClick = (catTitle) => {
-    if (selectedMainCat === catTitle) {
-      setSelectedMainCat("");
-      setSelectedSubCat("");
-      setExpandedCat("");
-    } else {
-      setSelectedMainCat(catTitle);
-      setSelectedSubCat("");
-      setExpandedCat(catTitle);
-    }
-    setSelectedOffer("");
-  };
-
-  const handleSubCatClick = (e, subTitle) => {
-    e.stopPropagation();
-    setSelectedSubCat(selectedSubCat === subTitle ? "" : subTitle);
-  };
-
-  /* ── Sidebar content (shared between desktop + mobile) ── */
-  const SidebarContent = () => (
-    <div className="fl-sidebar">
-      {/* Special Offers */}
-      <p className="fl-section-title">Special Offers</p>
-      <ul className="fl-offer-list">
-        {SPECIAL_OFFERS.map((offer) => (
-          <li key={offer.key}>
-            <span
-              className={`fl-offer-item${selectedOffer === offer.key ? " active" : ""}`}
-              onClick={() => {
-                setSelectedOffer(selectedOffer === offer.key ? "" : offer.key);
-                setSelectedMainCat("");
-                setSelectedSubCat("");
-              }}
-            >
-              <span className="fl-bolt" style={{ color: "#f39c12" }}>⚡</span>
-              {offer.label}
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      <div className="fl-sidebar-divider" />
-
-      {/* Categories */}
-      <p className="fl-cat-section-title">Categories</p>
-
-      {loadingCats
-        ? Array.from({ length: 4 }).map((_, i) => (
-            <Skeleton key={i} variant="text" width="80%" height={28} sx={{ mx: "1.1rem", mb: 0.5, bgcolor: "grey.100" }} animation="wave" />
-          ))
-        : categories.map((cat, idx) => {
-            const isExpanded = expandedCat === cat.title;
-            const isActive = selectedMainCat === cat.title;
-            const subCats = cat.sub_category || [];
-            return (
-              <div key={cat.id || idx}>
-                <div
-                  className={`fl-main-cat${isActive ? " active" : ""}`}
-                  onClick={() => handleMainCatClick(cat.title)}
-                >
-                  <div className="fl-main-cat-left">
-                    {cat.img && (
-                      <img src={cat.img} alt="" style={{ width: 20, height: 20, borderRadius: 3, objectFit: "cover" }} />
-                    )}
-                    <span className="fl-main-cat-name">{cat.title}</span>
-                    {subCats.length > 0 && (
-                      <span className="fl-main-cat-count">{subCats.length}</span>
-                    )}
-                  </div>
-                  <i className={`ri-arrow-right-s-line fl-main-cat-arrow`}></i>
-                </div>
-
-                {/* Subcategories */}
-                <div className={`fl-sub-list${isExpanded ? " open" : ""}`}>
-                  {subCats.map((sub, si) => (
-                    <span
-                      key={sub.id || si}
-                      className={`fl-sub-item${selectedSubCat === sub.title ? " active" : ""}`}
-                      onClick={(e) => handleSubCatClick(e, sub.title)}
-                    >
-                      {sub.title}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-
-      <div className="fl-sidebar-divider" />
-
-      {/* Clear */}
-      <div style={{ padding: "0.6rem 1.1rem" }}>
-        <button
-          onClick={clearAll}
-          style={{
-            width: "100%", padding: "7px 0", background: "transparent",
-            border: "1px solid #e0e0e0", borderRadius: 7, fontSize: "0.82rem",
-            color: "#666", cursor: "pointer", transition: "border-color 0.2s",
-          }}
-          onMouseOver={(e) => (e.target.style.borderColor = "#111")}
-          onMouseOut={(e) => (e.target.style.borderColor = "#e0e0e0")}
-        >
-          Clear All Filters 
-        </button>
-      </div>
-    </div>
-  );
-
   /* ── category pills from API data ── */
   const pillCategories = useMemo(() => {
     return categories.map((cat, idx) => ({
@@ -371,112 +263,136 @@ function Shop() {
       <Header />
 
       <div className="fl-shop-outer">
-      <div className="fl-shop-page">
-        {/* ── Desktop Left Sidebar ── */}
-        <div className="d-none d-md-block" style={{ flexShrink: 0 }}>
-          <SidebarContent />
-        </div>
-
-        {/* ── Right Content ── */}
-        <div className="fl-content">
-          {/* Mobile sidebar toggle */}
-          <button
-            className="fl-mobile-toggle d-md-none"
-            style={{ display: "flex" }}
-            onClick={() => setShowMobileSidebar((p) => !p)}
-          >
-            <i className={`ri-${showMobileSidebar ? "close" : "equalizer-2"}-line`}></i>
-            {showMobileSidebar ? "Close Filters" : "Filters & Categories"}
-          </button>
-
-          {/* Mobile sidebar panel */}
-          <div className={`fl-mobile-sidebar d-md-none${showMobileSidebar ? " open" : ""}`}>
-            <SidebarContent />
-          </div>
-
-          {/* Search bar */}
-          <div className="fl-search-wrap">
-            <i className="ri-search-line fl-search-icon"></i>
-            <input
-              type="search"
-              className="fl-search-input"
-              placeholder="Search a product"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+        <div className="fl-shop-page">
+          {/* ── Desktop Left Sidebar ── */}
+          <div className="d-none d-md-block" style={{ flexShrink: 0 }}>
+            <SidebarContent
+              categories={categories}
+              loadingCategories={loadingCats}
+              selectedMainCat={selectedMainCat}
+              selectedSubCat={selectedSubCat}
+              selectedOffer={selectedOffer}
+              setSelectedMainCat={setSelectedMainCat}
+              setSelectedSubCat={setSelectedSubCat}
+              setSelectedOffer={setSelectedOffer}
+              expandedCat={expandedCat}
+              setExpandedCat={setExpandedCat}
+              clearAll={clearAll}
             />
           </div>
 
-          {/* Category pills */}
-          {pillCategories.length > 0 && (
-            <div className="fl-cat-pills">
-              <span
-                className={`fl-cat-pill pill-all${!selectedMainCat ? " selected" : ""}`}
-                onClick={() => { setSelectedMainCat(""); setSelectedSubCat(""); setExpandedCat(""); }}
-              >
-                All
-              </span>
-              {pillCategories.map((pill, i) => (
-                <span
-                  key={i}
-                  className={`fl-cat-pill ${pill.colourClass}${selectedMainCat === pill.title ? " selected" : ""}`}
-                  onClick={() => {
-                    if (selectedMainCat === pill.title) {
-                      setSelectedMainCat(""); setSelectedSubCat(""); setExpandedCat("");
-                    } else {
-                      setSelectedMainCat(pill.title); setSelectedSubCat(""); setExpandedCat(pill.title);
-                    }
-                    setSelectedOffer("");
-                  }}
-                >
-                  {pill.title}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Topbar */}
-          <div className="fl-topbar">
-            <span className="fl-product-count">
-              {loadingProducts ? (
-                <Skeleton variant="text" width={100} />
-              ) : (
-                <><strong>{filteredProducts.length}</strong> Products</>
-              )}
-            </span>
-            <select
-              className="fl-sort-select"
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
+          {/* ── Right Content ── */}
+          <div className="fl-content">
+            {/* Mobile sidebar toggle */}
+            <button
+              className="fl-mobile-toggle d-md-none"
+              style={{ display: "flex" }}
+              onClick={() => setShowMobileSidebar((p) => !p)}
             >
-              <option value="">Sort: Relevance</option>
-              <option value="newest">Newest First</option>
-              <option value="low_to_high">Price: Low → High</option>
-              <option value="high_to_low">Price: High → Low</option>
-              <option value="a_z">Name: A → Z</option>
-              <option value="z_a">Name: Z → A</option>
-            </select>
-          </div>
+              <i className={`ri-${showMobileSidebar ? "close" : "equalizer-2"}-line`}></i>
+              {showMobileSidebar ? "Close Filters" : "Filters & Categories"}
+            </button>
 
-          {/* Product grid */}
-          {loadingProducts ? (
-            <SkeletonGrid count={12} />
-          ) : (
-            <div className="fl-products-grid">
-              {filteredProducts.length > 0 ? (
-                filteredProducts.map((product, i) => (
-                  <FlProductCard key={i} product={product} />
-                ))
-              ) : (
-                <div className="fl-empty">
-                  <i className="ri-inbox-line"></i>
-                  <p>No products found matching your filters.</p>
-                  <button className="fl-empty-btn" onClick={clearAll}>Clear Filters</button>
-                </div>
-              )}
+            {/* Mobile sidebar panel */}
+            <div className={`fl-mobile-sidebar d-md-none${showMobileSidebar ? " open" : ""}`}>
+              <SidebarContent
+                categories={categories}
+                loadingCategories={loadingCats}
+                selectedMainCat={selectedMainCat}
+                selectedSubCat={selectedSubCat}
+                selectedOffer={selectedOffer}
+                setSelectedMainCat={setSelectedMainCat}
+                setSelectedSubCat={setSelectedSubCat}
+                setSelectedOffer={setSelectedOffer}
+                expandedCat={expandedCat}
+                setExpandedCat={setExpandedCat}
+                clearAll={clearAll}
+              />
             </div>
-          )}
+
+            {/* Search bar */}
+            <div className="fl-search-wrap">
+              <i className="ri-search-line fl-search-icon"></i>
+              <input
+                type="search"
+                className="fl-search-input"
+                placeholder="Search a product"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+
+            {/* Category pills */}
+            {pillCategories.length > 0 && (
+              <div className="fl-cat-pills">
+                <span
+                  className={`fl-cat-pill pill-all${!selectedMainCat ? " selected" : ""}`}
+                  onClick={() => { setSelectedMainCat(""); setSelectedSubCat(""); setExpandedCat(""); }}
+                >
+                  All
+                </span>
+                {pillCategories.map((pill, i) => (
+                  <span
+                    key={i}
+                    className={`fl-cat-pill ${pill.colourClass}${selectedMainCat === pill.title ? " selected" : ""}`}
+                    onClick={() => {
+                      if (selectedMainCat === pill.title) {
+                        setSelectedMainCat(""); setSelectedSubCat(""); setExpandedCat("");
+                      } else {
+                        setSelectedMainCat(pill.title); setSelectedSubCat(""); setExpandedCat(pill.title);
+                      }
+                      setSelectedOffer("");
+                    }}
+                  >
+                    {pill.title}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* Topbar */}
+            <div className="fl-topbar">
+              <span className="fl-product-count">
+                {loadingProducts ? (
+                  <Skeleton variant="text" width={100} />
+                ) : (
+                  <><strong>{filteredProducts.length}</strong> Products</>
+                )}
+              </span>
+              <select
+                className="fl-sort-select"
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+              >
+                <option value="">Sort: Relevance</option>
+                <option value="newest">Newest First</option>
+                <option value="low_to_high">Price: Low → High</option>
+                <option value="high_to_low">Price: High → Low</option>
+                <option value="a_z">Name: A → Z</option>
+                <option value="z_a">Name: Z → A</option>
+              </select>
+            </div>
+
+            {/* Product grid */}
+            {loadingProducts ? (
+              <SkeletonGrid count={12} />
+            ) : (
+              <div className="fl-products-grid">
+                {filteredProducts.length > 0 ? (
+                  filteredProducts.map((product, i) => (
+                    <FlProductCard key={i} product={product} />
+                  ))
+                ) : (
+                  <div className="fl-empty">
+                    <i className="ri-inbox-line"></i>
+                    <p>No products found matching your filters.</p>
+                    <button className="fl-empty-btn" onClick={clearAll}>Clear Filters</button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
-      </div>
       </div>
 
       <Footer />

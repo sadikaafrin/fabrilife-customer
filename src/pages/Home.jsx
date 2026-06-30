@@ -14,6 +14,7 @@ import useCategories from "../data/useCategories";
 import useProducts from "../data/useProducts";
 import ProductCard from "../components/ProductCard";
 import InfoArea from "../components/InfoArea";
+import NewArrivalGrid from "../components/NewArrivalGrid";
 
 // ===== REUSABLE STYLE OBJECTS =====
 const styles = {
@@ -583,15 +584,14 @@ function Home() {
       </section>
 
       {/* New Arrival Products - With badge */}
-      <ProductSwiperSection
-        title="New Arrival Products"
-        subtitle="Explore all the new products"
-        products={products.filter((p) => p.product_type === "new_arrival")}
-        isLoading={isProductsLoading}
-        swiperRef={newArrivalSwiperRef}
-        seeAllLink="/shop"
-        showBadge={true}
-      />
+      <section className="new-arrival py-3 py-md-5">
+        <div className="container">
+          <NewArrivalGrid
+            products={products.filter((p) => p.product_type === "new_arrival")}
+            isLoading={isProductsLoading}
+          />
+        </div>
+      </section>
 
       {/* Top Selling Products */}
       <ProductSwiperSection
