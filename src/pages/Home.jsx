@@ -587,6 +587,7 @@ function Home() {
       <section className="new-arrival py-3 py-md-5">
         <div className="container">
           <NewArrivalGrid
+            title="NEW ARRIVAL"
             products={products.filter((p) => p.product_type === "new_arrival")}
             isLoading={isProductsLoading}
           />
@@ -594,36 +595,37 @@ function Home() {
       </section>
 
       {/* Top Selling Products */}
-      <ProductSwiperSection
-        title="Top Selling Products"
-        subtitle="Explore all the top selling products"
-        products={products.filter((p) => p.product_type === "top_selling")}
-        isLoading={isProductsLoading}
-        swiperRef={topSellingSwiperRef}
-        seeAllLink="/shop"
-        bgClass="bg-gray1"
-      />
+      <section className="new-arrival py-3 py-md-5">
+        <div className="container">
+          <NewArrivalGrid
+            title="Top Selling Products"
+            products={products.filter((p) => p.product_type === "top_selling")}
+            isLoading={isProductsLoading}
+          />
+        </div>
+      </section>
 
       {/* Trending Products */}
-      <ProductSwiperSection
-        title="Trending Products"
-        subtitle="Explore all the trending products"
-        products={products.filter((p) => p.product_type === "trending")}
-        isLoading={isProductsLoading}
-        swiperRef={trendingSwiperRef}
-        seeAllLink="/shop"
-      />
+      <section className="new-arrival py-3 py-md-5">
+        <div className="container">
+          <NewArrivalGrid
+            title="Trending Products"
+            products={products.filter((p) => p.product_type === "trending")}
+            isLoading={isProductsLoading}
+          />
+        </div>
+      </section>
 
       {/* Top Rated Products */}
-      <ProductSwiperSection
-        title="Top Rated Products"
-        subtitle="Explore all the top rated products"
-        products={products.filter((p) => p.product_type === "top_rated")}
-        isLoading={isProductsLoading}
-        swiperRef={topRatedSwiperRef}
-        seeAllLink="/shop"
-        bgClass="bg-gray1"
-      />
+      <section className="new-arrival py-3 py-md-5">
+        <div className="container">
+          <NewArrivalGrid
+            title="Top Rated Products"
+            products={products.filter((p) => p.product_type === "top_rated")}
+            isLoading={isProductsLoading}
+          />
+        </div>
+      </section>
 
       {/* Category-wise Product Sections */}
       {!isCategoriesLoading &&

@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom";
 import Skeleton from "@mui/material/Skeleton";
 
-// ─── NewArrivalGrid ──────────────────────────────────────────────────────────
-// Clicking a card navigates to the full Product page (/product/:slug).
 
-export default function NewArrivalGrid({ products = [], isLoading = false }) {
+
+export default function NewArrivalGrid({ products = [], isLoading = false, title = "" }) {
 
   if (isLoading) {
     return (
       <>
         <div style={s.sectionHeader}>
-          <h2 style={s.sectionTitle}>NEW ARRIVAL</h2>
+          <h2 style={s.sectionTitle}>{title}</h2>
           <div style={s.titleUnderline}></div>
         </div>
         <div style={s.grid}>
@@ -35,7 +34,7 @@ export default function NewArrivalGrid({ products = [], isLoading = false }) {
     <>
       {/* ── Section header ── */}
       <div style={s.sectionHeader}>
-        <h2 style={s.sectionTitle}>NEW ARRIVAL</h2>
+        <h2 style={s.sectionTitle}>{title}</h2>
         <div style={s.titleUnderline}></div>
       </div>
 

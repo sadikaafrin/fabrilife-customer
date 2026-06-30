@@ -141,7 +141,7 @@ function FooterContent() {
                 </div>
 
                 {/* Bottom bar */}
-                <div className="fl-footer-bottom">
+                <div className="fl-footer-bottom bg-white">
                     <div className="fl-footer-bottom-inner">
                         <p>© 2025 {webInfo?.name || 'Store'}. All Rights Reserved.</p>
                         <div className="fl-footer-bottom-links">
@@ -168,7 +168,7 @@ function FooterContent() {
 
             <style>{`
                 .fl-footer {
-                    background: #111;
+                    background: #58595B;
                     color: #fff;
                     border-top: 3px solid #000;
                 }
