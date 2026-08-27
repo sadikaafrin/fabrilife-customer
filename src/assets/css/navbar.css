@@ -735,3 +735,26 @@
     .fl-icon-btn { padding: 2px 4px; min-width: 32px; }
     .fl-icon-btn i { font-size: 16px; }
 }
+
+
+/* Hide Google Translate's default banner + widget chrome */
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+iframe[src*="translate.google"],
+.goog-te-gadget,
+#google_translate_element {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+}
+html, body {
+    top: 0px !important;
+}
+.goog-tooltip,
+.goog-tooltip:hover {
+    display: none !important;
+}
+.goog-text-highlight {
+    background: none !important;
+    box-shadow: none !important;
+}

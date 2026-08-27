@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from "../CartContext";
 import { useWishlist } from "../WishlistContext";
@@ -6,6 +6,7 @@ import useWebInfo from "../data/useWebInfo";
 import LOGO from '../../public/logo.png';
 import useProducts from '../data/useProducts';
 import useCategories from "../data/useCategories";
+import { initGoogleTranslate, switchLanguage } from "../data/googleTranslate";
 
 function Navbar() {
     const navigate = useNavigate();
@@ -18,6 +19,19 @@ function Navbar() {
     const [searchTerm, setSearchTerm] = useState("");
     const [suggestions, setSuggestions] = useState([]);
     const navRef = useRef(null);
+
+    // ── Language toggle (Google Translate) ──
+    const [lang, setLang] = useState("en");
+
+    useEffect(() => {
+        initGoogleTranslate();
+    }, []);
+
+    const toggleLanguage = () => {
+        const nextLang = lang === "en" ? "bn" : "en";
+        switchLanguage(nextLang);
+        setLang(nextLang);
+    };
 
     const handleSearchChange = (e) => {
         const value = e.target.value;
@@ -210,11 +224,26 @@ function Navbar() {
                                 {wishlistCount > 0 && <span className="fl-badge">{wishlistCount}</span>}
                             </button>
 
+                            {/* Language toggle - Mobile top navbar */}
+                            <button className="fl-icon-btn fl-mobile-only" onClick={toggleLanguage} aria-label="Translate">
+                                <i className="ri-translate-2"></i>
+                            </button>
+
                             {/* Desktop icons */}
                             <Link to="/order-tracking" className="fl-icon-btn fl-icon-labeled fl-desktop-only" aria-label="Track Order">
                                 <i className="ri-map-pin-2-line"></i>
                                 <span>Track</span>
                             </Link>
+
+                            {/* Language toggle - Desktop */}
+                            <button
+                                className="fl-icon-btn fl-icon-labeled fl-desktop-only"
+                                onClick={toggleLanguage}
+                                aria-label="Translate"
+                            >
+                                <i className="ri-translate-2"></i>
+                                <span>{lang === "en" ? "বাং" : "EN"}</span>
+                            </button>
 
                             <button className="fl-icon-btn fl-icon-labeled fl-desktop-only" onClick={goToAccount} aria-label="Account">
                                 <i className="ri-user-line"></i>
@@ -352,6 +381,16 @@ function Navbar() {
                                 <Link className="nav-text text-uppercase" style={{ fontWeight: 600, fontSize: '14px' }} to="/order-tracking" onClick={closeMenuBtn}>
                                     <i className="ri-map-pin-2-line" style={{ marginRight: 8, fontSize: 16 }}></i>Track Order
                                 </Link>
+                            </li>
+                            <li style={{ padding: "11px 0" }}>
+                                <button
+                                    className="nav-text text-uppercase"
+                                    style={{ fontWeight: 600, fontSize: '14px', background: 'none', border: 'none', padding: 0, width: '100%', textAlign: 'left', display: 'flex', alignItems: 'center' }}
+                                    onClick={toggleLanguage}
+                                >
+                                    <i className="ri-translate-2" style={{ marginRight: 8, fontSize: 16 }}></i>
+                                    {lang === "en" ? "বাংলা তে দেখুন" : "View in English"}
+                                </button>
                             </li>
                         </ul>
 
